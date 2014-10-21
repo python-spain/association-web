@@ -52,3 +52,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Python Spain ignores
+*local.py
+/media/*
+/static/*
+
+# Vim
+*.swp
+
