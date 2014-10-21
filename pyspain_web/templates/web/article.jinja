@@ -1,0 +1,17 @@
+{% extends "web/base.jinja" %}
+
+{% block body %}
+<div class="article-page">
+    <section class="article">
+        <article>
+            <header>
+                <h2>{{ article.title }}</h2>
+                <p>Creado <time datetime="{{ article.created_at.isoformat() }}">{{ article.created_at|date("D d M Y") }}</time>
+                    por <a href="#">{{ article.created_by.get_full_name() }}</a></p>
+            </header>
+
+            {{ view.markup(article.content)|safe }}
+        </article>
+    </section>
+</div>
+{% endblock %}

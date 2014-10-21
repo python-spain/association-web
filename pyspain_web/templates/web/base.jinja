@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Asociación Python-España</title>
+
+    <link type="text/css" rel="stylesheet" media="all" href="{{ static('web/css/reset.css') }}" />
+    <link type="text/css" rel="stylesheet" media="all" href="{{ static('web/css/main.css') }}" />
+
+    <link rel="alternate" type="application/rss+xml" title="Ultimas noticias de Python España" href="{{ url('rss-news') }}" />
+    <link rel="alternate" type="application/rss+xml" title="Eventos de las comunidades locales" href="{{ url('rss-events') }}" />
+
+    {% block headers %}
+    {% endblock %}
+</head>
+<body>
+    <div class="main-container">
+        <div class="page-zone page-header-zone">
+            <div class="page-container">
+                <div class="header-container">
+                    {% include "web/include-header.jinja" %}
+                </div>
+            </div>
+        </div>
+        <div class="page-zone page-body-zone">
+            <div class="page-container">
+                <div class="body-container">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

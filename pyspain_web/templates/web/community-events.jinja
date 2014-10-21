@@ -1,0 +1,25 @@
+{% extends "web/base.jinja" %}
+
+{% block body %}
+<div class="community-events-page">
+    <section class="community-events">
+        <h1>Calendario de eventos Python en España</h2>
+
+        {% for entry in page.object_list %}
+        <article>
+            <header>
+                <h2><a href="{{ entry.link }}">{{ entry.name }}</a></h2>
+                <p>Publicada <time datetime="{{ entry.created_at.isoformat() }}">{{ entry.created_at|date("D d M Y") }}</time></p>
+            </header>
+            {{ view.markup(entry.description)|safe }}
+        </article>
+        {% else %}
+        <article>
+            <p>No hay eventos</p>
+        </article>
+        {% endfor %}
+
+        {% include "web/include-paginator.jinja" %}
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "web/base.jinja" %}
+
+{% block body %}
+<div class="page-page">
+    <section class="page">
+        <article>
+            {{ view.markup(page.content)|safe() }}
+        </article>
+    </section>
+</div>
+{% endblock %}

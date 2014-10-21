@@ -1,0 +1,23 @@
+{% extends "web/base.jinja" %}
+
+{% block body %}
+<div class="faq-page">
+    <section class="faq-list">
+        <h1>FAQ</h2>
+
+        {% for entry in entries %}
+        <article>
+            <header>
+                <h2><a href="">{{ entry.question }}</a></h2>
+            </header>
+
+            {{ view.markup(entry.response)|safe() }}
+        </article>
+        {% else %}
+        <article>
+            <p>Aun tenemos pocas preguntas como para determinar cuales son las frecuentes ;)</p>
+        </article>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

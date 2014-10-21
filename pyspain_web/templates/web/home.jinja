@@ -1,0 +1,28 @@
+{% extends "web/base.jinja" %}
+
+{% block body %}
+<div class="home-page">
+    <section class="last-news">
+        <h1>Ultimas noticias:</h2>
+
+        {% for article in page.object_list %}
+        <article>
+            <header>
+                <h2><a href="{{ url("article", slug=article.slug) }}">{{ article.title }}</a></h2>
+                <p>Creado <time datetime="{{ article.created_at.isoformat() }}">{{ article.created_at|date("D d M Y") }}</time>
+                    por <a href="#">{{ article.created_by.get_full_name() }}</a></p>
+            </header>
+
+            {{ view.markup(article.content, truncate=1000)|safe() }}
+        </article>
+        {% else %}
+        <article>
+            <p>No hay articulos para mostrar.</p>
+        </article>
+        {% endfor %}
+
+        {% include "web/include-paginator.jinja" %}
+    </section>
+
+</div>
+{% endblock %}
