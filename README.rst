@@ -17,7 +17,7 @@ NOTE: requires python3.3
 
 
 
-`initial_user` fixture inserts a test supeuser
+`initial_user` fixture inserts a test superuser
 with 'admin@admin.com' as username and '123123'
 as password.
 
