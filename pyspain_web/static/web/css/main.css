@@ -74,6 +74,12 @@ a:active {
     margin: auto;
 }
 
+.page-footer {
+    width: 940px;
+    padding: 20px;
+    margin: auto;
+}
+
 .header-container a {
     color: #aaa;
 }
