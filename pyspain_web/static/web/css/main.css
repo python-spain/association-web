@@ -199,6 +199,21 @@ section .pagination .step-links .current {
 
 /* Home Page */
 
+.overview p {
+    color: #555;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    text-align: justify;
+}
+.overview p.loud {
+    font-size: 1.5em;
+}
+.overview a {
+    text-decoration: underline;
+}
+.overview a.member {
+    font-weight: bold;
+}
 .last-news h1 {
     color: #AAA;
 }
