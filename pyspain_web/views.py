@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import get_model
 from django.shortcuts import get_object_or_404
 
-from pyspain.views import GenericView, GenericTemplateView
+from pyspain.views import GenericTemplateView
 from pyspain_web import utils
 
 

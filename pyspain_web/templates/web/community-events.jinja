@@ -3,6 +3,8 @@
 {% block body %}
 <div class="community-events-page">
     <section class="community-events">
+        {% include "web/community-map.jinja" %}
+        <hr>
         <h1>Calendario de eventos Python en España</h2>
 
         {% for entry in page.object_list %}
