@@ -274,6 +274,5 @@ section .pagination .step-links .current {
 }
 
 #map {
-    width: 70vw;
     height:500px;
 }
