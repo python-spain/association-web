@@ -101,3 +101,6 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = path.join(BASE_DIR, "static")
 MEDIA_ROOT = path.join(BASE_DIR, "media")
+
+# X-Frame options
+X_FRAME_OPTIONS = 'DENY'
