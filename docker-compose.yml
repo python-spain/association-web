@@ -9,7 +9,7 @@ services:
         image: postgres:9.6
         container_name: python-es-postgres
         volumes:
-            - db-data:/var/lib/postgres
+            - ./db-data:/var/lib/postgresql/data
         env_file: src/.env
         networks:
             - python-es-network
@@ -23,7 +23,7 @@ services:
         container_name: python-es-web
         command: bash -c "/venv/bin/python manage.py migrate && /venv/bin/python manage.py collectstatic --noinput && /venv/bin/gunicorn -w 6 -t 60 -b 0.0.0.0:5030 pyspain.wsgi --access-logfile gunicorn-access-log --error-logfile gunicorn-error-log --log-level debug"
         volumes:
-            - .src/static:/python-es-web/static
+            - ./src/static:/python-es-web/static
         networks:
             - python-es-network
         depends_on:
@@ -43,7 +43,7 @@ services:
         depends_on:
             - python-es-web
         volumes:
-            - .src/static:/python-es-web/static
+            - ./src/static:/python-es-web/static
 
 
 networks:
