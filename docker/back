@@ -18,6 +18,5 @@ RUN /venv/bin/easy_install --upgrade requests
 RUN /venv/bin/pip install -r /python-es-web/requirements.txt
 
 # SETUP the application
-COPY . /python-es-web
-
+COPY src /python-es-web
 WORKDIR /python-es-web

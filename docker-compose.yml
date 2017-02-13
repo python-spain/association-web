@@ -1,10 +1,52 @@
 version: "2"
+
+volumes:
+  db-data:
+    driver: local
+
 services:
+    python-es-postgres:
+        image: postgres:9.6
+        container_name: python-es-postgres
+        volumes:
+            - db-data:/var/lib/postgres
+        env_file: src/.env
+        networks:
+            - python-es-network
+
+
     python-es-web:
+        build:
+            context: .
+            dockerfile: docker/back
         image: python-es-web:1.0
         container_name: python-es-web
-        command: bash -c "/venv/bin/python manage.py migrate && /venv/bin/python manage.py collectstatic --noinput && /venv/bin/gunicorn -w 6 -t 60 -b unix:/python-es-web-sock/python-es-web.sock pyspain.wsgi --access-logfile gunicorn-access-log --error-logfile gunicorn-error-log --log-level debug"
+        command: bash -c "/venv/bin/python manage.py migrate && /venv/bin/python manage.py collectstatic --noinput && /venv/bin/gunicorn -w 6 -t 60 -b 0.0.0.0:5030 pyspain.wsgi --access-logfile gunicorn-access-log --error-logfile gunicorn-error-log --log-level debug"
         volumes:
-            - /home/yami/python-es-web:/python-es-web-sock
-            - /home/yami/python-es-web/static:/python-es-web/static
-        network_mode: host
+            - .src/static:/python-es-web/static
+        networks:
+            - python-es-network
+        depends_on:
+            - python-es-postgres
+
+
+    python-es-nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx
+        image: python-es-nginx:1.0
+        container_name: python-es-nginx
+        ports:
+            - "5003:5003"
+        networks:
+            - python-es-network
+        depends_on:
+            - python-es-web
+        volumes:
+            - .src/static:/python-es-web/static
+
+
+networks:
+  python-es-network:
+    driver: bridge
+

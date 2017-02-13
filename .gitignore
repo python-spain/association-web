@@ -56,8 +56,11 @@ target/
 # Python Spain ignores
 *local.py
 /media/*
-/static/*
+*/static/*
 
 # Vim
 *.swp
 
+.env
+
+*.sql

@@ -1,0 +1,4 @@
+FROM nginx:latest
+
+# Nginx config
+ADD ./docker/nginx.conf /etc/nginx/nginx.conf
