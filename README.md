@@ -1,5 +1,7 @@
 # Web de la Asociación
 
+*Nota: Este repositorio está obsoleto, ver https://github.com/python-spain/web para la web actual*
+
 Web de la Asociación Python España.
 
 # Contribuciones
